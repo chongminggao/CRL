@@ -76,7 +76,7 @@ def sltrain(model, optimizer, data_loader, criterion, device, polisher=None, log
         if polisher is not None:
             loss = polisher.polish_loss(categorical_fields, numerical_fields, labels, y)
         else:
-            loss_list = [criterion(y[i], labels[:, i].float()) for i in range(labels.size(1))]
+            loss_list = [criterion(y[k], labels[:, k].float()) for k in range(labels.size(1))]
             loss = 0
             for item in loss_list:
                 loss += item

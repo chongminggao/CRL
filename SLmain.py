@@ -169,6 +169,8 @@ if __name__ == '__main__':
     parser.add_argument('--device', default='cuda:0')
     parser.add_argument('--save_dir', default='./chkpt/SL')
     args = parser.parse_args()
+
+    args.device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
     main(args.dataset_name,
          args.dataset_path,
          args.task_num,
